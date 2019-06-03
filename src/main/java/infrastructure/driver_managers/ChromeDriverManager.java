@@ -1,12 +1,15 @@
 package infrastructure.driver_managers;
 
 import infrastructure.DriverManager;
+import infrastructure.Settings;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.UncheckedIOException;
 
 public class ChromeDriverManager extends DriverManager {
     private ChromeDriverService service;
@@ -16,12 +19,12 @@ public class ChromeDriverManager extends DriverManager {
         if (service == null) {
             try {
                 service = new ChromeDriverService.Builder ()
-                        .usingDriverExecutable (new File ("D:/JAVA_COMMON/JAVA_HELPFUL/Selenium/chromedriver.exe"))
+                        .usingDriverExecutable (new File (Settings.get ().getChromeDriverPath ()))
                         .usingAnyFreePort ()
                         .build ();
                 service.start ();
-            } catch (Exception e) {
-                e.printStackTrace ();
+            } catch (IOException e) {
+                throw new UncheckedIOException (e);
             }
         }
     }

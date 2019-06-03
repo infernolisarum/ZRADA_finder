@@ -1,6 +1,7 @@
 package infrastructure;
 
 import infrastructure.driver_managers.ChromeDriverManager;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class DriverManagerFactory {
     public static DriverManager getDriverManager(BrowserType type) {
@@ -10,9 +11,7 @@ public class DriverManagerFactory {
                 manager = new ChromeDriverManager ();
                 break;
             case FIREFOX:
-                System.out.println ("Browser " + type.name () + " is not supported at the moment." +
-                        "\nChoose a different browser.");
-                break;
+                throw new NotImplementedException ();
         }
         return manager;
     }

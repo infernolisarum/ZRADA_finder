@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.List;
 
@@ -40,8 +41,7 @@ public abstract class BasePage {
         driver.get (URL);
     }
 
-    public void waitForPageToLoad(By by, int seconds){
-        Wait<WebDriver> wait = new WebDriverWait (driver, seconds);
-        wait.until (ExpectedConditions.elementToBeClickable (by));
+    public void waitForPageToLoad(){
+        throw new NotImplementedException ();
     }
 }
