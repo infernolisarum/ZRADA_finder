@@ -11,7 +11,6 @@ import org.junit.Assert;
 import page_object.pages.UkrNetPage;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
 
 public class UkrNetSteps extends BaseSteps {
     private UkrNetPage ukrNetPage;
@@ -33,7 +32,7 @@ public class UkrNetSteps extends BaseSteps {
         ukrNetPage.navigateTo (string);
     }
 
-    @And("I waiting for ukrNetPage loading")
+    @And("I am waiting for ukrNetPage loading")
     public void i_waiting_for_page_loading() {
         ukrNetPage.waitForPageToLoad ();
     }
@@ -45,7 +44,7 @@ public class UkrNetSteps extends BaseSteps {
 
     @And("If among them I find news from {string} I report on the {string}")
     public void if_among_them_I_find_news_from_I_report_on_the(String string, String string2) {
-        Assert.assertThat("!!!" + string2 + "!!! Contains news on the news ukrNetPage from " + string,
+        Assert.assertThat("!!!" + string2 + "!!! UkrNet page contains news from " + string,
                 ukrNetPage.checkForSeparatistPublication (string), is(true));
     }
 }

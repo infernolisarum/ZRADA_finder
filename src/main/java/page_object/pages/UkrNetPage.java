@@ -20,7 +20,7 @@ public class UkrNetPage extends BasePage {
     private List<WebElement> resultList;
 
     public void findAllElementToFeedSection(){
-        resultList = findVisibleElements (By.xpath ("//article[@id='feed']"), 8);
+        resultList = findVisibleElements (By.id ("feed"), 8);
     }
 
     public boolean checkForSeparatistPublication(String separName){
@@ -35,6 +35,6 @@ public class UkrNetPage extends BasePage {
 
     @Override
     public void waitForPageToLoad(){
-        waitForElementVisibility (By.xpath ("//section[@class='header__logo']//a//img"), 8);
+        waitForElementVisibility (By.className ("header__logo"), 8);
     }
 }
